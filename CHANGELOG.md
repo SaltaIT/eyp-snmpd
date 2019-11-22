@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.5
+
+* added **dont_log_tcp_wrappers_connects** flag
+* added support for:
+  - Ubuntu 16.04
+  - Ubuntu 18.04
+  - RHEL 8
+
 ## 0.1.4
 
 * improved deletion support

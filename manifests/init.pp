@@ -10,17 +10,18 @@
 # @param syslocation System contact information: location (default: somewhere)
 # @param syscontact System contact information: contact (default: someone)
 class snmpd (
-              $manage_package        = true,
-              $package_ensure        = 'installed',
-              $manage_service        = true,
-              $manage_docker_service = true,
-              $service_ensure        = 'running',
-              $service_enable        = true,
-              $community             = 'public',
-              $subtree               = [ '.1.3.6.1.2.1.1', '.1.3.6.1.2.1.25.1.1' ],
-              $allowed_hosts         = [ 'default' ],
-              $syslocation           = 'somewhere',
-              $syscontact            = 'someone',
+              $manage_package                 = true,
+              $package_ensure                 = 'installed',
+              $manage_service                 = true,
+              $manage_docker_service          = true,
+              $service_ensure                 = 'running',
+              $service_enable                 = true,
+              $community                      = 'public',
+              $subtree                        = [ '.1.3.6.1.2.1.1', '.1.3.6.1.2.1.25.1.1' ],
+              $allowed_hosts                  = [ 'default' ],
+              $syslocation                    = 'somewhere',
+              $syscontact                     = 'someone',
+              $dont_log_tcp_wrappers_connects = true,
             ) inherits snmpd::params{
   validate_array($subtree)
   validate_array($allowed_hosts)

@@ -71,7 +71,7 @@ syscontact <%= @syscontact %>
 # If the following option is commented out, snmpd will print each incoming
 # connection, which can be useful for debugging.
 
-dontLogTCPWrappersConnects yes
+dontLogTCPWrappersConnects <%= scope.function_bool2yesno([@dont_log_tcp_wrappers_connects]) %>
 
 # -----------------------------------------------------------------------------
 
