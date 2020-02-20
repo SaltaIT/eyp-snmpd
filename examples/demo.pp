@@ -1,6 +1,6 @@
 class { 'snmpd': }
 
-snmpd::v3user { 'demov3user':
+snmpd::v3user { 'v3testuser':
   authpass => '1234567890',
-  encpass  => 'abcdefghij',
+  encpass  => '1234567890',
 }
