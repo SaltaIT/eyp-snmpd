@@ -1,6 +1,7 @@
 class snmpd::params {
 
   $service_name = 'snmpd'
+  $create_user_snmpd_v3 = '/usr/bin/net-snmp-create-v3-user'
 
   case $::osfamily
   {
