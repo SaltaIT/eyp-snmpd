@@ -3,7 +3,7 @@ mounts = Facter::Util::Resolution.exec('bash -c \'df -TP | grep -v "\btmpfs\b\|\
 unless mounts.nil? or mounts.empty?
   Facter.add('eyp_snmpd_mountpoints') do
       setcode do
-        mounts.split('\n')
+        mounts
       end
   end
 end
