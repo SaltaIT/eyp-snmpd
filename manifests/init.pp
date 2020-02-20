@@ -22,6 +22,7 @@ class snmpd (
               $syslocation                    = 'somewhere',
               $syscontact                     = 'someone',
               $dont_log_tcp_wrappers_connects = true,
+              $add_disk_monit                 = true,
             ) inherits snmpd::params{
   validate_array($subtree)
   validate_array($allowed_hosts)
