@@ -5,7 +5,7 @@ define snmpd::disk(
                     $order       = '42',
                   ) {
 
-  concat::fragment { "eyp-snmpd - disk ${disks}":
+  concat::fragment { "eyp-snmpd - disk ${disk} ${disks}":
     target  => '/etc/snmp/snmpd.conf',
     order   => "01-${order}",
     content => template("${module_name}/disk.erb"),
