@@ -15,10 +15,12 @@ define snmpd::v3user(
   if($ro)
   {
     $ro_flag = '-ro'
+    $kind_v3_user = 'rouser'
   }
   else
   {
     $ro_flag = ''
+    $kind_v3_user = 'rwuser'
   }
 
   exec { "create snmpdv3 user ${username}":
@@ -27,6 +29,13 @@ define snmpd::v3user(
     path    => '/usr/sbin:/usr/bin:/sbin:/bin',
     require => Class['::snmpd::install'],
     notify  => Class['::snmpd::service'],
+  }
+
+  # rwuser demo
+  concat::fragment { "snmpv3 create user ${username}":
+    target  => '/etc/snmp/snmpd.conf',
+    order   => '99',
+    content => template("${module_name}/v3user.erb"),
   }
 
 }
