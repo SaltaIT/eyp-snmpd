@@ -11,8 +11,13 @@ class snmpd::params {
 
       case $::operatingsystemrelease
       {
-        /^[5-8].*$/:
+        /^[5-6].*$/:
         {
+          $servicectl_stop = "service ${service_name} stop"
+        }
+        /^[7-8].*$/:
+        {
+          $servicectl_stop = "systemctl stop ${service_name}"
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
@@ -27,8 +32,13 @@ class snmpd::params {
         {
           case $::operatingsystemrelease
           {
-            /^1[468].*$/:
+            /^1[4].*$/:
             {
+              $servicectl_stop = "service ${service_name} stop"
+            }
+            /^1[68].*$/:
+            {
+              $servicectl_stop = "systemctl stop ${service_name}"
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }

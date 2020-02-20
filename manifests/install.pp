@@ -7,7 +7,7 @@ class snmpd::install inherits snmpd {
     }
 
     exec { 'fix snmpdv3 create user':
-      command => "sed -e 's/^if.*snmpd[^;]*/if false/' -e 's@/etc/snmp/snmpd.conf@/dev/null@' ${snmpd::params::create_user_snmpd_v3} > /usr/local/bin/puppet_net-snmp-create-v3-user",
+      command => "sed -e 's/^if.*snmpd[^;]*/${snmpd::params::servicectl_stop}\\nif false/' -e 's@/etc/snmp/snmpd.conf@/dev/null@' ${snmpd::params::create_user_snmpd_v3} > /usr/local/bin/puppet_net-snmp-create-v3-user",
       unless  => 'grep "if false" /usr/local/bin/puppet_net-snmp-create-v3-user',
       path    => '/usr/sbin:/usr/bin:/sbin:/bin',
       require => Package[$snmpd::params::package_name],
