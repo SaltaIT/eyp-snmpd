@@ -23,9 +23,10 @@ define snmpd::v3user(
 
   exec { 'fix snmpdv3 create user':
     command => "/usr/local/bin/puppet_net-snmp-create-v3-user ${ro_flag} -A ${authpass} -a ${auth_algorithm} -X ${authpass} -x ${enc_algorithm}",
-    unless => '',
-    path => '/usr/sbin:/usr/bin:/sbin:/bin',
+    unless  => '',
+    path    => '/usr/sbin:/usr/bin:/sbin:/bin',
     require => Class['::snmpd'],
+    notify  => Class['::snmpd::service']
   }
 
 }
