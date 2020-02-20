@@ -7,13 +7,12 @@ class snmpd::config inherits snmpd {
       owner   => 'root',
       group   => 'root',
       mode    => '0600',
-      content => template("${module_name}/snmpdconf.erb"),
     }
 
     concat::fragment { 'base snmpd v2':
       target  => '/etc/snmp/snmpd.conf',
       order   => '00',
-      content => template("${module_name}/puppetconf_main.erb"),
+      content => template("${module_name}/snmpdconf.erb"),
     }
 
     if($snmpd::add_disk_monit)
