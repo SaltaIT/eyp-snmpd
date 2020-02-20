@@ -22,11 +22,11 @@ define snmpd::v3user(
   }
 
   exec { "create snmpdv3 user ${username}":
-    command  => "/usr/local/bin/puppet_net-snmp-create-v3-user ${ro_flag} -A ${authpass} -a ${auth_algorithm} -X ${authpass} -x ${enc_algorithm}",
-    unless   => 'false',
-    path     => '/usr/sbin:/usr/bin:/sbin:/bin',
-    reqquire => Class['::snmpd::install'],
-    notify   => Class['::snmpd::service'],
+    command => "/usr/local/bin/puppet_net-snmp-create-v3-user ${ro_flag} -A ${authpass} -a ${auth_algorithm} -X ${authpass} -x ${enc_algorithm}",
+    unless  => 'false',
+    path    => '/usr/sbin:/usr/bin:/sbin:/bin',
+    require => Class['::snmpd::install'],
+    notify  => Class['::snmpd::service'],
   }
 
 }
