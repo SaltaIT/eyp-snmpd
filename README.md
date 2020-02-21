@@ -21,7 +21,11 @@ SNMP agent management
 
 ## Module Description
 
-snmpd management: SNMP v1 and v2c ACL management and SNMPv3 user creation
+snmpd management: SNMP v1 and v2c ACL management and SNMPv3 user creation.
+
+Support for:
+  - disk monitoring
+  - load average monitoring
 
 ## Setup
 
