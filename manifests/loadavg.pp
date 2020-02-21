@@ -1,7 +1,7 @@
 class snmpd::loadavg(
                       $load1  = max(2, ceiling(sprintf('%d', ($::processorcount)*2.8))),
-                      $load5  = max(2, ceiling(sprintf('%d', ($::processorcount)*2.6))),
-                      $load15 = max(2, ceiling(sprintf('%d', ($::processorcount)*2.5))),
+                      $load5  = max(4, ceiling(sprintf('%d', ($::processorcount)*2.6))),
+                      $load15 = max(6, ceiling(sprintf('%d', ($::processorcount)*2.5))),
                     ) inherits snmpd::params{
 
   include ::snmpd
