@@ -1,8 +1,7 @@
-class snmpd::load(
-                    $load1  = max(2, ceiling(sprintf('%d', ($::processorcount)*2.7))),
-                    $load5  = max(4, ceiling(sprintf('%d', ($::processorcount)*2.5)),
-                    $load15 = max(6, ceiling(sprintf('%d', ($::processorcount)*2.3))),
-                  ) inherits snmpd::params {
+# $load1  = max(2, ceiling(sprintf('%d', ($::processorcount)*2.7))),
+# $load5  = max(4, ceiling(sprintf('%d', ($::processorcount)*2.5)),
+# $load15 = max(6, ceiling(sprintf('%d', ($::processorcount)*2.3))),
+class snmpd::load () inherits snmpd::params{
 
   include ::snmpd
 
