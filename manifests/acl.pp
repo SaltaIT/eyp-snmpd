@@ -17,7 +17,7 @@ define snmpd::acl (
   concat::fragment { "snmpd ACL ${security_name} ${community} ${group_name}":
     target  => '/etc/snmp/snmpd.conf',
     order   => "02-${order}",
-    content => template("${module_name}/v3user.erb"),
+    content => template("${module_name}/acl.erb"),
   }
 
 }
