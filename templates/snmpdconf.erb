@@ -7,6 +7,7 @@
 #
 ###############################################################################
 
+<% if @add_default_acls %>
 ###############################################################################
 # Access Control
 ###############################################################################
@@ -41,7 +42,7 @@ view    systemview    included   <%= val %>
 #       group          context sec.model sec.level prefix read   write  notif
 access  notConfigGroup ""      any       noauth    exact  systemview none none
 
-
+<% end %>
 ###############################################################################
 # System contact information
 #

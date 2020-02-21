@@ -23,6 +23,7 @@ class snmpd (
               $syscontact                     = 'someone',
               $dont_log_tcp_wrappers_connects = true,
               $add_disk_monit                 = true,
+              $add_default_acls               = true,
             ) inherits snmpd::params{
 
   class { '::snmpd::install': } ->

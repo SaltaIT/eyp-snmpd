@@ -1,0 +1,33 @@
+<% if defined?(@description) -%>
+#
+# <%= @description %>
+#
+<% end %>
+# First, map the community name into a "security name"
+
+#       sec.name  source          community
+<% @allowed_hosts.each do | val | -%>
+com2sec <%= @security_name %>  <%= val %>       <%= @community %>
+<% end -%>
+
+####
+# Second, map the security name into a group name:
+
+#       groupName      securityModel securityName
+<% @security_model.each do |val| -%>
+group   <%= @group_name %> <%= val %>           <%= @security_name %>
+<% end -%>
+
+####
+# Third, create a view for us to let the group have rights to:
+
+#       name           incl/excl     subtree         mask(optional)
+<% @subtree.each do | val | -%>
+view    <%= @view_name %>    included   <%= val %>
+<% end -%>
+
+####
+# Finally, grant the group read-only access to the systemview view.
+
+#       group          context sec.model sec.level prefix read   write  notif
+access  <%= @group_name %> "" any noauth <%= @context %> <% if @read %><%= @view_name %><% else %>none<% end %> <% if @write %><%= @view_name %><% else %>none<% end %> none
