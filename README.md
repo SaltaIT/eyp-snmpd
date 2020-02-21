@@ -21,7 +21,7 @@ SNMP agent management
 
 ## Module Description
 
-This module is intended to disable snmpd
+snmpd management: SNMP v1 and v2c ACL management and SNMPv3 user creation
 
 ## Setup
 
@@ -31,8 +31,6 @@ This module is intended to disable snmpd
 * snmpd service
 
 ### Setup Requirements
-
-This module requires pluginsync enabled
 
 ### Beginning with snmpd
 
@@ -44,23 +42,55 @@ class { 'snmpd': }
 
 ## Usage
 
-disable snmpd:
+### disable snmpd
 
-```
+```puppet
 class { 'snmpd':
   service_ensure => 'stopped',
   service_enable => false,
 }
 ```
 
-purge snmpd:
+### purge snmpd
 
-```
+```puppet
 class { 'snmpd':
   package_ensure => 'purged',
   manage_service => false,
 }
 ```
+
+### SNMP v1 and v2c ACL
+
+```puppet
+class { 'snmpd':
+  add_default_acls => false,
+}
+
+snmpd::acl { 'demo':
+  community => '1234567890',
+}
+```
+
+### SNMPv3 user creation
+
+```puppet
+class { 'snmpd':
+  add_default_acls => false,
+}
+
+snmpd::v3user { 'v3testuser':
+  authpass => '1234567890',
+  encpass  => '1234567890',
+}
+```
+
+This setup can be tested vis snmpwalk:
+
+```
+# snmpwalk -v3  -l authPriv -u v3testuser -a SHA -A "1234567890"  -x AES -X "1234567890" 127.0.0.1 system
+```
+
 
 ## Reference
 
@@ -73,6 +103,16 @@ class { 'snmpd':
   * manage_docker_service = true,
   * service_ensure        = 'running',
   * service_enable        = true,
+
+### snmp::acl
+
+### snmpd::disk
+
+Relies on fact **::eyp_snmpd_mountpoints** for autoconfiguring disk monitoring if **snmpd::add_disk_monit** is set to true (default is true)
+
+### snmpd::v3user
+
+It is asumed that **/usr/bin/net-snmp-create-v3-user** is a bash script that this module modifies for it's own purposes. The modified script is stored on **/usr/local/bin/puppet_net-snmp-create-v3-user**
 
 ## Limitations
 

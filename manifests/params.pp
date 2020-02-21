@@ -8,6 +8,7 @@ class snmpd::params {
     'redhat':
     {
       $package_name = [ 'net-snmp', 'net-snmp-utils' ]
+      $net_snmpd_persistent_datafile = '/var/lib/net-snmp/snmpd.conf'
 
       case $::operatingsystemrelease
       {
@@ -24,7 +25,8 @@ class snmpd::params {
     }
     'Debian':
     {
-      $package_name = 'snmpd'
+      $package_name = [ 'snmpd', 'libsnmp-dev' ]
+      $net_snmpd_persistent_datafile = '/var/lib/snmp/snmpd.conf'
 
       case $::operatingsystem
       {
