@@ -116,11 +116,7 @@ It is asumed that **/usr/bin/net-snmp-create-v3-user** is a bash script that thi
 
 ## Limitations
 
-Tested on:
-* CentOS 5
-* CentOS 5
-* CentOS 7
-* Ubuntu 14.04
+Mostly tested on CentOS 7 and Ubuntu 16.04
 
 ## Development
 
