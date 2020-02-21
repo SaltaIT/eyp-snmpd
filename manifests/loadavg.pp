@@ -1,8 +1,8 @@
-class snmpd::loadavg (
-  $load1  = '2',
-  $load5  = '4',
-  $load15 = '6',
-  ) inherits snmpd::params{
+class snmpd::loadavg(
+                      $load1  = '2',
+                      $load5  = '4',
+                      $load15 = '6',
+                    ) inherits snmpd::params{
 
   include ::snmpd
 
