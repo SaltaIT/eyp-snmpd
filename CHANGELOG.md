@@ -6,6 +6,7 @@
   - Added SNMPv3 support
   - Added ACL management for v1 and v2c
   - disk monitoring
+  - load average monitoring
 
 ## 0.1.5
 
