@@ -25,7 +25,7 @@ define snmpd::v3user(
 
   exec { "create snmpdv3 user ${username}":
     command => "/usr/local/bin/puppet_net-snmp-create-v3-user ${ro_flag} -A ${authpass} -a ${auth_algorithm} -X ${authpass} -x ${enc_algorithm} ${username}",
-    unless  => "grep '${username}' ${net_snmpd_persistent_datafile}",
+    unless  => "grep '${username}' ${snmpd::params::net_snmpd_persistent_datafile}",
     path    => '/usr/sbin:/usr/bin:/sbin:/bin',
     require => Class['::snmpd::install'],
     notify  => Class['::snmpd::service'],
