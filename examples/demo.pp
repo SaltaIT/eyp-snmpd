@@ -2,7 +2,7 @@ class { 'snmpd':
   add_default_acls => false,
 }
 
-class { 'snmpd::load': }
+class { 'snmpd::loadavg': }
 
 snmpd::v3user { 'v3testuser':
   authpass => '1234567890',
