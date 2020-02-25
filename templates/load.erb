@@ -1,0 +1,35 @@
+###############################################################################
+# load average checks
+#
+
+# load [1MAX=12.0] [5MAX=12.0] [15MAX=12.0]
+#
+# 1MAX:   If the 1 minute load average is above this limit at query
+#         time, the errorFlag will be set.
+# 5MAX:   Similar, but for 5 min average.
+# 15MAX:  Similar, but for 15 min average.
+
+# Check for loads:
+load <%= @load1 %> <%= @load5 %> <%= @load15 %>
+
+# % snmpwalk -v 1 localhost -c <%= @community %> .1.3.6.1.4.1.2021.10
+# enterprises.ucdavis.loadTable.laEntry.loadaveIndex.1 = 1
+# enterprises.ucdavis.loadTable.laEntry.loadaveIndex.2 = 2
+# enterprises.ucdavis.loadTable.laEntry.loadaveIndex.3 = 3
+# enterprises.ucdavis.loadTable.laEntry.loadaveNames.1 = "Load-1"
+# enterprises.ucdavis.loadTable.laEntry.loadaveNames.2 = "Load-5"
+# enterprises.ucdavis.loadTable.laEntry.loadaveNames.3 = "Load-15"
+# enterprises.ucdavis.loadTable.laEntry.loadaveLoad.1 = "0.49" Hex: 30 2E 34 39
+# enterprises.ucdavis.loadTable.laEntry.loadaveLoad.2 = "0.31" Hex: 30 2E 33 31
+# enterprises.ucdavis.loadTable.laEntry.loadaveLoad.3 = "0.26" Hex: 30 2E 32 36
+# enterprises.ucdavis.loadTable.laEntry.loadaveConfig.1 = "12.00"
+# enterprises.ucdavis.loadTable.laEntry.loadaveConfig.2 = "14.00"
+# enterprises.ucdavis.loadTable.laEntry.loadaveConfig.3 = "14.00"
+# enterprises.ucdavis.loadTable.laEntry.loadaveErrorFlag.1 = 0
+# enterprises.ucdavis.loadTable.laEntry.loadaveErrorFlag.2 = 0
+# enterprises.ucdavis.loadTable.laEntry.loadaveErrorFlag.3 = 0
+# enterprises.ucdavis.loadTable.laEntry.loadaveErrMessage.1 = ""
+# enterprises.ucdavis.loadTable.laEntry.loadaveErrMessage.2 = ""
+# enterprises.ucdavis.loadTable.laEntry.loadaveErrMessage.3 = ""
+
+# -----------------------------------------------------------------------------
