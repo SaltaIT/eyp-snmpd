@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.2
+
+* added auto ACL mode
+
 ## 0.2.1
 
 * millora check snmpv3 user
