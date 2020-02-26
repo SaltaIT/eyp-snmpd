@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.1
+
+* millora check snmpv3 user
+
 ## 0.2.0
 
 * major rework
