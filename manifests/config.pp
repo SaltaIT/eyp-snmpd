@@ -7,6 +7,7 @@ class snmpd::config inherits snmpd {
       owner   => 'root',
       group   => 'root',
       mode    => '0600',
+      backup  => true,
     }
 
     concat::fragment { 'base snmpd v2':
