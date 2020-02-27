@@ -1,5 +1,5 @@
 define snmpd::acl (
-                    $community,
+                    $community         = undef,
                     $description       = undef,
                     $order             = '42',
                     $security_name     = $name,
@@ -11,13 +11,31 @@ define snmpd::acl (
                     $read              = true,
                     $write             = false,
                     $context           = 'prefix',
+                    $auto_acl          = false,
   ) {
   include ::snmpd
+
+  if($auto_acl)
+  {
+    $comunity_parsed = $::eyp_snmpd_acls[$security_name]['community']
+    $allowed_hosts_parsed = $::eyp_snmpd_acls[$security_name]['hosts']
+  }
+  else
+  {
+    if($community == undef)
+    {
+      fail('community is not an optional argument unless $auto_acl is set to true')
+    }
+    else
+    {
+      $comunity_parsed = $community
+      $allowed_hosts_parsed = $allowed_hosts
+    }
+  }
 
   concat::fragment { "snmpd ACL ${security_name} ${community} ${group_name}":
     target  => '/etc/snmp/snmpd.conf',
     order   => "10-${order}",
     content => template("${module_name}/acl.erb"),
   }
-
 }

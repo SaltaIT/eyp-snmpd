@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.3
+
+* simplified auto ACL mode
+
 ## 0.2.2
 
 * added auto ACL mode

@@ -6,7 +6,16 @@ class { 'snmpd::loadavg': }
 
 # snmpwalk -v3  -l authPriv -u v3testuser -a SHA -A "1234567890"  -x AES -X "1234567890" 127.0.0.1 system
 
-snmpd::acl { 'demo':
+snmpd::acl { 'demoacl':
   community     => $::eyp_snmpd_acls['demo']['community'],
   allowed_hosts => $::eyp_snmpd_acls['demo']['hosts'],
+}
+
+snmpd::acl { 'autoacl1':
+  community     => $::eyp_snmpd_acls['demo']['community'],
+  allowed_hosts => $::eyp_snmpd_acls['demo']['hosts'],
+}
+
+snmpd::acl { 'autoacl2':
+  auto_acl => true,
 }
