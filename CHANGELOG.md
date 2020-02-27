@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.4
+
+* add backup flag to **snmpd.conf**
+
 ## 0.2.3
 
 * simplified auto ACL mode
