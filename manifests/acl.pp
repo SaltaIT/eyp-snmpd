@@ -17,7 +17,7 @@ define snmpd::acl (
 
   if($auto_acl)
   {
-    $comunity_parsed = $::eyp_snmpd_acls[$security_name]['community']
+    $community_parsed = $::eyp_snmpd_acls[$security_name]['community']
     $allowed_hosts_parsed = $::eyp_snmpd_acls[$security_name]['hosts']
   }
   else
@@ -28,7 +28,7 @@ define snmpd::acl (
     }
     else
     {
-      $comunity_parsed = $community
+      $community_parsed = $community
       $allowed_hosts_parsed = $allowed_hosts
     }
   }
