@@ -12,8 +12,8 @@ snmpd::acl { 'demoacl':
 }
 
 snmpd::acl { 'autoacl1':
-  community     => $::eyp_snmpd_acls['demo']['community'],
-  allowed_hosts => $::eyp_snmpd_acls['demo']['hosts'],
+  community     => $::eyp_snmpd_acls['autoacl1']['community'],
+  allowed_hosts => $::eyp_snmpd_acls['autoacl1']['hosts'],
 }
 
 snmpd::acl { 'autoacl2':
