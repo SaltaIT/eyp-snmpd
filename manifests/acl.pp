@@ -36,7 +36,7 @@ define snmpd::acl (
 
   if($fail_on_absent_autoacl)
   {
-    if($community_parsed==undef) || ($allowed_hosts_parsed==undef)
+    if(($community_parsed==undef) or ($allowed_hosts_parsed==undef))
     {
       fail("security_name ${security_name} not found on snmpd.conf")
     }
