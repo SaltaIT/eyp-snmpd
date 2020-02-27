@@ -1,12 +1,6 @@
 snmp_users = Facter::Util::Resolution.exec('bash -c \'grep com2sec /etc/snmp/snmpd.conf | awk "{ print \$2 }" | sort | uniq\'').to_s
 
 unless snmp_users.nil? or snmp_users.empty?
-  # Facter.add('eyp_snmpd_acls') do
-  #     setcode do
-  #       snmp_users.split("\n")
-  #     end
-  # end
-
   snmp_acls = {}
 
   for snmp_user in snmp_users.split("\n")
