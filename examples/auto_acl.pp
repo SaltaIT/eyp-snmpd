@@ -8,7 +8,7 @@ class { 'snmpd::loadavg': }
 
 snmpd::acl { 'demoacl':
   community     => 'abcdefghjiklmn',
-  allowed_hosts => '1.1.1.1',
+  allowed_hosts => [ '1.1.1.1' ],
 }
 
 snmpd::acl { 'autoacl1':
