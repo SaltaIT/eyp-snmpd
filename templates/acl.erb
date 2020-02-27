@@ -6,8 +6,8 @@
 # First, map the community name into a "security name"
 
 #       sec.name  source          community
-<% @allowed_hosts.each do | val | -%>
-com2sec <%= @security_name %>  <%= val %>       <%= @community %>
+<% @allowed_hosts_parsed.each do | val | -%>
+com2sec <%= @security_name %>  <%= val %>       <%= @community_parsed %>
 <% end -%>
 
 ####
