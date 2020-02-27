@@ -18,8 +18,23 @@ define snmpd::acl (
 
   if($auto_acl)
   {
-    $community_parsed = $::eyp_snmpd_acls[$security_name]['community']
-    $allowed_hosts_parsed = $::eyp_snmpd_acls[$security_name]['hosts']
+    if($::eyp_snmpd_acls[$security_name]==undef)
+    {
+      $community_parsed = undef
+    }
+    else
+    {
+      $community_parsed = $::eyp_snmpd_acls[$security_name]['community']
+    }
+
+    if($::eyp_snmpd_acls[$security_name]==undef)
+    {
+      $allowed_hosts_parsed = undef
+    }
+    else
+    {
+      $allowed_hosts_parsed = $::eyp_snmpd_acls[$security_name]['hosts']
+    }
   }
   else
   {
