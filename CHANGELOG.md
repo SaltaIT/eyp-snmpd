@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.5
+
+* flag to ignore not prexistent users in autoACL mode
+
 ## 0.2.4
 
 * add backup flag to **snmpd.conf**

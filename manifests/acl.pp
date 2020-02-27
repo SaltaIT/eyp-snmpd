@@ -1,17 +1,18 @@
 define snmpd::acl (
-                    $community         = undef,
-                    $description       = undef,
-                    $order             = '42',
-                    $security_name     = $name,
-                    $group_name        = $name,
-                    $view_name         = "view_${name}",
-                    $allowed_hosts     = [ '127.0.0.1/32' ],
-                    $security_model    = [ 'v1', 'v2c' ],
-                    $included_subtrees = [ '.1' ],
-                    $read              = true,
-                    $write             = false,
-                    $context           = 'prefix',
-                    $auto_acl          = false,
+                    $community              = undef,
+                    $description            = undef,
+                    $order                  = '42',
+                    $security_name          = $name,
+                    $group_name             = $name,
+                    $view_name              = "view_${name}",
+                    $allowed_hosts          = [ '127.0.0.1/32' ],
+                    $security_model         = [ 'v1', 'v2c' ],
+                    $included_subtrees      = [ '.1' ],
+                    $read                   = true,
+                    $write                  = false,
+                    $context                = 'prefix',
+                    $auto_acl               = false,
+                    $fail_on_absent_autoacl = false,
   ) {
   include ::snmpd
 
@@ -30,6 +31,14 @@ define snmpd::acl (
     {
       $community_parsed = $community
       $allowed_hosts_parsed = $allowed_hosts
+    }
+  }
+
+  if($fail_on_absent_autoacl)
+  {
+    if($community_parsed==undef) || ($allowed_hosts_parsed==undef)
+    {
+      fail("security_name ${security_name} not found on snmpd.conf")
     }
   }
 
