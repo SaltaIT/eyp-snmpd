@@ -1,3 +1,5 @@
+# this example should FAIL
+
 class { 'snmpd':
   add_default_acls => false,
 }
