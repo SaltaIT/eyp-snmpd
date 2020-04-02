@@ -1,6 +1,6 @@
 define snmpd::extend(
                       $script,
-                      $name        = $name,
+                      $extend_name        = $name,
                       $description = undef,
                       $mib_oid     = undef,
                       $order       = '42',
@@ -15,7 +15,7 @@ define snmpd::extend(
   #
   #       The exit status and output is cached for each entry individually, and can be cleared (and the caching behaviour configured) using the nsCacheTable.
 
-  concat::fragment { "eyp-snmpd - extend ${name}":
+  concat::fragment { "eyp-snmpd - extend ${extend_name}":
     target  => '/etc/snmp/snmpd.conf',
     order   => "02-${order}",
     content => template("${module_name}/extend.erb"),
