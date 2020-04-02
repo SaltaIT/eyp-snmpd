@@ -9,7 +9,7 @@ snmpd::v3user { 'v3testuser':
   encpass  => '1234567890',
 }
 
-# snmpwalk -v3  -l authPriv -u v3testuser -a SHA -A "1234567890"  -x AES -X "1234567890" 127.0.0.1 system
+# snmpwalk -v3  -l authPriv -u v3testuser -a SHA -A "1234567890"  -x AES -X "1234567890" 127.0.0.1 .1 | grep demodate
 
 snmpd::extend { 'demodate':
   script => '/usr/bin/date +%s',
