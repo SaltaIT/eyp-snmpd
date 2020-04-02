@@ -11,6 +11,6 @@ snmpd::v3user { 'v3testuser':
 
 # snmpwalk -v3  -l authPriv -u v3testuser -a SHA -A "1234567890"  -x AES -X "1234567890" 127.0.0.1 system
 
-snmpd::extend { 'demo':
+snmpd::extend { 'demodate':
   script => 'date +%s',
 }
