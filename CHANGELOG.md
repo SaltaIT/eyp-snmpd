@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.6
+
+* Added **snmpd::extend**
+
 ## 0.2.5
 
 * flag to ignore not prexistent users in autoACL mode
