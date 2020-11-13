@@ -1,6 +1,6 @@
 {
   "name": "eyp-snmpd",
-  "version": "0.2.6",
+  "version": "2.0.6",
   "author": "Jordi Prats",
   "summary": "SNMP agent management",
   "license": "Apache-2.0",
